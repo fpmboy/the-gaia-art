@@ -73,8 +73,42 @@
             color: #333;
         }
         .donation-about {
+            margin: 10px 0;
             font-size: 18px;
-            color: #222;
+            color: #333;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        @media (max-width: 600px) {
+            .panel {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .section {
+                width: 100%;
+            }
+            .donate-button {
+                width: 80%;
+            }
         }
     </style>
 </head>
@@ -87,18 +121,35 @@
             </blockquote>
         </div>
         <div class="section">
+            <div class="donation-indicator">
+                <div class="donation-fill"></div>
+                <div class="donation-text">7 out of 10 EUR/tree</div>
+            </div>
+            <div class="donation-info">Total <strong style="font-size: 18px;">273</strong> trees planted.<br>Fullfilled by GreenCyprus.com</div>
+            <div class="donation-about">Help us to make <i>Κύπρος</i> green again!</div>
+            <button class="donate-button" onclick="showModal()">Donate Now</button>
+        </div>
+        <div class="section">
             <h2>About project</h2>
             <p>Acrylic paintings form a waterproof, protective layer on exposed tree wood. An experiment with a tree revealed that after four years, a painted area had only two new bark beetle entrances and no signs of wood rotting, while an unpainted area was severely damaged by bark beetles and decay. These exposed parts are like wounds, and acrylic paint acts as an artificial bark, shielding the tree’s inner layers and extending its lifespan.</p>
         </div>
-        <div class="section">
-            <div class="donation-indicator">
-                <div class="donation-fill"></div>
-                <div class="donation-text">11 out of 15 EUR per tree</div>
-            </div>
-            <div class="donation-about">Help us to make <i>Κύπρος</i> green again!</div>
-            <div class="donation-info">Total <strong style="font-size: 18px;">273</strong> trees planted.<br>Fullfilled by GreenCyprus.com</div>
-            <button class="donate-button">Donate Now</button>
-        </div>
     </div>
+    
+    <div class="modal-overlay" id="modalOverlay" onclick="hideModal()"></div>
+    <div class="modal" id="modal">
+        <p>Thank You!</p>
+        <button onclick="hideModal()">Close</button>
+    </div>
+    
+    <script>
+        function showModal() {
+            document.getElementById('modalOverlay').style.display = 'block';
+            document.getElementById('modal').style.display = 'block';
+        }
+        function hideModal() {
+            document.getElementById('modalOverlay').style.display = 'none';
+            document.getElementById('modal').style.display = 'none';
+        }
+    </script>
 </body>
-</html> 
+</html>
