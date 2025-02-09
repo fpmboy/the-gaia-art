@@ -3,14 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Gaia Art: Protecting Nature Through Creativity</title>
+    <title>The Gaia Art</title>
     <script async src="https://www.instagram.com/embed.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            padding: 20px;
-            background-image: url('https://www.transparenttextures.com/patterns/leaf.png');
             background-size: cover;
             background-color: #cfe8d5;
         }
@@ -18,12 +16,20 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-template-rows: auto auto;
-            gap: 20px;
+            gap: 10px;
             max-width: 800px;
+            padding: 0 20px 20px 20px;
             margin: auto;
         }
         .instagram-section {
             grid-row: span 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .about-section {
+            align-content: left;
+            text-align: left;
         }
         .section {
             padding: 20px;
@@ -38,12 +44,13 @@
             border-radius: 5px;
             margin: 10px auto;
             position: relative;
+            border: 2px solid black;
         }
         .donation-fill {
             width: 70%;
             height: 100%;
             background-color: green;
-            border-radius: 5px 0 0 5px;
+            border-radius: 3px 0 0 3px;
             position: absolute;
         }
         .donation-text {
@@ -58,18 +65,19 @@
         .donate-button {
             display: block;
             width: 66%;
+            height: 50px;
             margin: 10px auto;
             padding: 10px;
             background-color: green;
             color: white;
-            font-size: 16px;
+            font-size: 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
         .donation-info {
             margin: 10px 0;
-            font-size: 14px;
+            font-size: 12px;
             color: #333;
         }
         .donation-about {
@@ -78,13 +86,14 @@
             color: #333;
         }
         .modal {
-            display: none;
+            display: none; 
             position: fixed;
+            width: 250px;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             background-color: white;
-            padding: 20px;
+            padding: 10px;
             border-radius: 8px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
         }
@@ -113,11 +122,10 @@
     </style>
 </head>
 <body>
-    <h1>The Gaia Art: Protecting Nature Through Creativity</h1>
+    <h1 style="font-family: 'Lobster', cursive;">The Gaia Art</h1>
     <div class="panel">
         <div class="section instagram-section">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CY1aHA9vXr4/" data-instgrm-version="13">
-                <a href="https://www.instagram.com/p/CY1aHA9vXr4/">View this post on Instagram</a>
+            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CY1aHA9vXr4/" data-instgrm-version="14">
             </blockquote>
         </div>
         <div class="section">
@@ -125,20 +133,40 @@
                 <div class="donation-fill"></div>
                 <div class="donation-text">7 out of 10 EUR/tree</div>
             </div>
-            <div class="donation-info">Total <strong style="font-size: 18px;">273</strong> trees planted.<br>Fullfilled by GreenCyprus.com</div>
-            <div class="donation-about">Help us to make <i>Κύπρος</i> green again!</div>
+            <div class="donation-about">Total <strong style="font-size: 18px;">273</strong> trees planted</div>
             <button class="donate-button" onclick="showModal()">Donate Now</button>
+            <div class="donation-info">In partnership with Forest Department</div>
+            <div class="donation-about">Help us to make <i>Κύπρος</i> green again!</div>
         </div>
-        <div class="section">
-            <h2>About project</h2>
-            <p>Acrylic paintings form a waterproof, protective layer on exposed tree wood. An experiment with a tree revealed that after four years, a painted area had only two new bark beetle entrances and no signs of wood rotting, while an unpainted area was severely damaged by bark beetles and decay. These exposed parts are like wounds, and acrylic paint acts as an artificial bark, shielding the tree’s inner layers and extending its lifespan.</p>
+        <div class="section about-section">
+            <h3 style="text-align: center;">About project</h3>
+            <p>We are community of artists - who cares about nature around them. And we are using our art to do so.</p>
+            <p>Acrylic paintings form a waterproof, protective, bio-safe layer on exposed inner part of tree. To test impact of such arts, experiment was conducted.</p>
+            <p>After 4 years:</p>
+                <ul>
+                    <li>painted area - <b>2</b> new bark beetle exits, <b>NO</b> signs of wood rotting;</li>
+                    <li><b>un</b>painted area - <b>90</b>% of surface indepth by <b>2-3</b>cm: severely damaged by bark beetles and decay;</li>
+                </ul>
+            <p style="text-align: center;"><i>Pictures shields the trees inner layers from aggressive surroundings and extends its lifespan.</i></p>
         </div>
     </div>
     
     <div class="modal-overlay" id="modalOverlay" onclick="hideModal()"></div>
     <div class="modal" id="modal">
-        <p>Thank You!</p>
-        <button onclick="hideModal()">Close</button>
+        <p><b>Thank You!</b></p>
+        <div>
+            <label>ETH/USDT:</label>
+        </div>
+        <div>
+            <input id="eth" width="200px" type="text" value="0x2c74af66d74D369e06f8aDD064cceeced25bC55C" disabled>
+            <button class="copy" onclick="copyEth()">Copy</button>
+        </div>
+        <p></p>
+        <div>
+            <label>Revolut:</label>
+            <button class="copy" onclick="openRevolut()">Open</button>
+        </div>
+        <p></p>
     </div>
     
     <script>
@@ -149,6 +177,16 @@
         function hideModal() {
             document.getElementById('modalOverlay').style.display = 'none';
             document.getElementById('modal').style.display = 'none';
+        }
+        function openRevolut(url) {
+            window.open('https://revolut.me/bykostas', '_blank').focus();
+        }
+        function copyEth() {
+            var copyText = document.getElementById("eth");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(copyText.value);
+            alert("Copied the text: " + copyText.value);
         }
     </script>
 </body>
